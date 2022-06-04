@@ -14,12 +14,13 @@
         update: yes
         
     - name: Copy daemon
-      shell: cp /root/web-app/etc/systemd/system/web-app.service /root/web-app/etc/systemd/system/web-app.service
+      shell: cp /root/web-app/etc/systemd/system/web-app.service /etc/systemd/system/web-app.service
 
     - name: Enable service
       ansible.builtin.systemd:
         name: web-app.service
         enabled: yes
+        
     - name: Start service
       ansible.builtin.systemd:
         state: started
