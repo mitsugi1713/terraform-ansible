@@ -249,3 +249,24 @@ resource "azurerm_network_interface_backend_address_pool_association" "web" {
       azurerm_lb_backend_address_pool.backend_pool
     ]
 }
+
+resource "azurerm_virtual_machine_extension" "install-ansible" {
+    name                 = "install-ansible"
+    virtual_machine_id   = azurerm_linux_virtual_machine.management.id
+    publisher            = "Microsoft.Azure.Extensions"
+    type                 = "CustomScript"
+    type_handler_version = "2.0"
+
+    settings = <<SETTINGS
+    {
+        "commandToExecute": "sudo apt update && sudo apt install -y software-properties-common && sudo add-apt-repository --yes --update ppa:ansible/ansible && sudo apt install ansible -y"
+    }
+SETTINGS
+}
+
+resource "local_file" "ansible_inventory" {
+    content =  templatefile("${path.module}/ansible/inventory.tmpl", {
+        private_ip_addresses = azurerm_network_interface.vm-net-interface-private.*.private_ip_address
+    })
+    filename = "./ansible/inventory"
+}
