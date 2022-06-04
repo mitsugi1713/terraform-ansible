@@ -4,7 +4,6 @@
   become: true
   hosts: web_app_servers
 
-
   tasks:
     - name: Clone application
       ansible.builtin.git:
@@ -20,7 +19,7 @@
       ansible.builtin.systemd:
         name: web-app.service
         enabled: yes
-        
+
     - name: Start service
       ansible.builtin.systemd:
         state: started
