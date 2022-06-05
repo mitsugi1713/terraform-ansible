@@ -1,6 +1,6 @@
 ---
 ansible_user: miriam
 ansible_password: s1c2v3l4t5SS7
-ansible_become_user: miriam
+ansible_become_user: root
 ansible_become_password: s1c2v3l4t5SS7
 ansible_python_interpreter: /usr/bin/python3
