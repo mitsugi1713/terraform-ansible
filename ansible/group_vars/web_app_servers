@@ -1,6 +1,6 @@
 ---
 ansible_user: yana2
-ansible_password: 1234
+ansible_password: 1a2s3d4fAD
 ansible_become_user: root
-ansible_become_password: 1234
+ansible_become_password: 1a2s3d4fAD
 ansible_python_interpreter: /usr/bin/python3
