@@ -9,7 +9,7 @@ terraform{
 
 provider "azurerm" {
     features {}
-    subscription_id = "f9bf6f1c-3e96-4c71-870b-74211270087e"
+    subscription_id = "1edb3239-dea3-4790-9f61-b489faa4a448"
 }
 
 resource "azurerm_resource_group" "nuwm-cloud" {
@@ -104,8 +104,8 @@ resource "azurerm_linux_virtual_machine" "management" {
     resource_group_name             = azurerm_resource_group.nuwm-cloud.name
     location                        = azurerm_resource_group.nuwm-cloud.location
     size                            = "Standard_B1ls"
-    admin_username                  = "mitsugi"
-    admin_password                  = "s1c2v3l4t5SS7"
+    admin_username                  = "yana1"
+    admin_password                  = "1234"
     disable_password_authentication = false
     network_interface_ids = [
         azurerm_network_interface.vm-net-interface-pub.id,
@@ -168,8 +168,8 @@ resource "azurerm_linux_virtual_machine" "web" {
     resource_group_name             = azurerm_resource_group.nuwm-cloud.name
     location                        = azurerm_resource_group.nuwm-cloud.location
     size                            = "Standard_B1ls"
-    admin_username                  = "miriam"
-    admin_password                  = "s1c2v3l4t5SS7"
+    admin_username                  = "yana2"
+    admin_password                  = "1234"
     disable_password_authentication = false
     network_interface_ids = [
         element( azurerm_network_interface.vm-net-interface-private.*.id, count.index)
